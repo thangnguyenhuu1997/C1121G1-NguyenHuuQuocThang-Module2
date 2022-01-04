@@ -1,8 +1,7 @@
-package ss3_mang_va_phuong_thuc_trong_java.bai_tap.ThemPhanTuVaoMang;
+package ss3_mang_va_phuong_thuc_trong_java.bai_tap.TimGiaTriNhoNhatTrongMang;
 
-import java.util.Scanner;
 import java.util.Arrays;
-
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc1 = new Scanner(System.in);
@@ -14,18 +13,14 @@ public class Main {
             arr1[i] = sc1.nextInt();
         }
         System.out.println(Arrays.toString(arr1));
-        System.out.println("nhập số cần chèn X");
-        int X = sc1.nextInt();
-        System.out.println("nhập vị trí cần chèn ");
-        int index = sc1.nextInt();
-        arr1 = Arrays.copyOf(arr1,size1+1);
-
-        for (int i = size1 - 1; i >= index; i--) {
-            arr1[i+1] = arr1[i];
-        }
-        arr1[index] = X;
+        int min = arr1[0];
         for (int i = 0; i < arr1.length; i++) {
-            System.out.println(Arrays.toString(arr1));
+            if (min > arr1[i]) {
+                min = arr1[i];
+            }
         }
+
+        System.out.println("giạ trị nhỏ nhất là :" + min);
+
     }
 }
