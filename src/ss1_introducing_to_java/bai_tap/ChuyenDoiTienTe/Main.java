@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        double USD;
+        double usd;
         Scanner sc =new Scanner(System.in);
         System.out.println("Nhập số tiền USD");
-        USD = sc.nextDouble();
-        double VND = USD * 23000;
-        System.out.println("Số tiền quy đổi là: " + VND);
+        usd = sc.nextDouble();
+        double vnd = usd * 23000;
+        System.out.println("Số tiền quy đổi là: " + vnd);
     }
 }
