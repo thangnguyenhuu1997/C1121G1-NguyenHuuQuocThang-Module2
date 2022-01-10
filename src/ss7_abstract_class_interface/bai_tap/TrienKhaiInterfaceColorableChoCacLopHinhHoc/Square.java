@@ -1,9 +1,9 @@
 package ss7_abstract_class_interface.bai_tap.TrienKhaiInterfaceColorableChoCacLopHinhHoc;
 
-public class square extends Graphic {
+public class Square extends Graphic {
     private double canh;
 
-    public square(double canh) {
+    public Square(double canh) {
         this.canh = canh;
     }
 
