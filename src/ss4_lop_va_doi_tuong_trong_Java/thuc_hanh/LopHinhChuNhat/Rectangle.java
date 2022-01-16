@@ -1,7 +1,8 @@
 package ss4_lop_va_doi_tuong_trong_Java.thuc_hanh.LopHinhChuNhat;
 
 public class Rectangle {
-    double width, height;
+    double width;
+    double height;
 
     public Rectangle() {
     }

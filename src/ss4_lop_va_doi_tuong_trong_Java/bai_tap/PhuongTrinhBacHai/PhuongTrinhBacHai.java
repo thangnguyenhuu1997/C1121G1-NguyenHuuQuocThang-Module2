@@ -1,7 +1,9 @@
 package ss4_lop_va_doi_tuong_trong_Java.bai_tap.PhuongTrinhBacHai;
 
 public class PhuongTrinhBacHai {
-    private double a, b, c;
+    private double a;
+    private double b;
+    private double c;
 
     public PhuongTrinhBacHai(){
     }

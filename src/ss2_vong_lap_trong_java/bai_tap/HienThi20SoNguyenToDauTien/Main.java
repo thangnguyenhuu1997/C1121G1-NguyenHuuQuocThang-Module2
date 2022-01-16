@@ -3,7 +3,7 @@ package ss2_vong_lap_trong_java.bai_tap.HienThi20SoNguyenToDauTien;
 import java.util.Scanner;
 
 public class Main {
-    public static boolean snt(int n ){
+    public static boolean isPrime(int n ){
         if (n < 2 ){
             return false ;
         }
@@ -21,7 +21,7 @@ public class Main {
         int n = 2 ;
         int numBer = sc.nextInt();
         while (count < numBer){
-            if (snt(n)){
+            if (isPrime(n)){
                 System.out.println(n);
                 count++;
             }
