@@ -1,4 +1,4 @@
-package ss14_thuat_toan_tim_kiem.thuc_hanh.MinhHoaThuatToanSapXepNoiBot;
+package ss14_thuat_toan_sap_xep.thuc_hanh.MinhHoaThuatToanSapXepNoiBot;
 import java.util.Scanner;
 
 public class BubbleSortByStep {

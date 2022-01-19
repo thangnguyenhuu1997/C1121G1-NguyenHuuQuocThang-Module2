@@ -1,4 +1,4 @@
-package ss13_thuat_toan_sap_xep.thuc_hanh.CaiDatThuatToanTimKiemNhiPhanKhongSuDungDeQuy;
+package ss13_thuat_toan_tim_kiem.thuc_hanh.CaiDatThuatToanTimKiemNhiPhanKhongSuDungDeQuy;
 import java.util.Scanner;
 
 public class BinarySearch {

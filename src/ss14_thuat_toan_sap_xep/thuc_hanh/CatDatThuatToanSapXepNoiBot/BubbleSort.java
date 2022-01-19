@@ -1,4 +1,4 @@
-package ss14_thuat_toan_tim_kiem.thuc_hanh.CatDatThuatToanSapXepNoiBot;
+package ss14_thuat_toan_sap_xep.thuc_hanh.CatDatThuatToanSapXepNoiBot;
 
 public class BubbleSort {
     static int[] list = {2, 3, 2, 5, 6, 1, -2, 3, 14, 12};

@@ -1,4 +1,4 @@
-package ss14_thuat_toan_tim_kiem.thuc_hanh.CatDatThuatToanSapXepChon;
+package ss14_thuat_toan_sap_xep.thuc_hanh.CatDatThuatToanSapXepChon;
 
 public class SelectionSort {
     static double[] list = {1, 9, 4.5, 6.6, 5.7, -4.5};
