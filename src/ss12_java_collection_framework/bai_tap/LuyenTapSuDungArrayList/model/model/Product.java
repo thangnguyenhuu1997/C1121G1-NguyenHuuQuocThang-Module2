@@ -39,6 +39,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return maSanPham + '\t' + tenSanPham + '\t' + giaTien;
+        return this.getTenSanPham() + ',' + this.getMaSanPham() + ',' + this.getGiaTien();
     }
 }
