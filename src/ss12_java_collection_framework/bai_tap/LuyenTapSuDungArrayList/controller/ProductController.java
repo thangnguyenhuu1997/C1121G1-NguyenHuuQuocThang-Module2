@@ -13,11 +13,12 @@ public class ProductController {
                 +"Chọn chức năng theo số (để tiếp tục):"+"\n"
                 +"1. Thêm mới"+"\n" + "2. Sửa thông tin" + "\n" + "3. Xóa sản phẩm" + "\n" +
                 "4. Hiển thị danh sách sản phẩm" + "\n" + "5. Tìm kiếm" + "\n" +
-                "6. Sắp xếp"+"\n" + "Xin mời chọn chức năng");
+                "6. Sắp xếp"+"\n" + "Xin mời chọn chức năng"+"\n" +"7. Thêm mới file");
         int choice= Integer.parseInt(sc.nextLine());
         switch (choice){
             case 1:
                 iProductService.add();
+                iProductService.writeFile();
                 break;
             case 2:
                 Scanner scanner = new Scanner(System.in);
@@ -41,6 +42,9 @@ public class ProductController {
                 iProductService.search(tenSanPham1);
                 break;
             case 6:
+                break;
+            case 7:
+                iProductService.readFile();
                 break;
         }
     }

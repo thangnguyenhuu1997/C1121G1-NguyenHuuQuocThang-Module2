@@ -6,4 +6,6 @@ public interface IProductService {
     void delete(String maSanPham);
     void disPlay();
     void search(String tenSanPham);
+    void writeFile();
+    void readFile();
 }
