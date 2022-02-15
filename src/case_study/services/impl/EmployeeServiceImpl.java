@@ -15,114 +15,63 @@ public class EmployeeServiceImpl extends Employee implements EmployeeService {
     @Override
     public void disPlay() {
         for (Employee employee : employees) {
-            System.out.println(employee);
+            System.out.println(employee.toString());
         }
     }
 
     @Override
     public void add() {
-        Employee employee = new Employee();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhập mã ID");
-        employee.setMaID(scanner.nextLine());
-        System.out.println("Nhập họ và tên");
-        employee.setHoVaTen(scanner.nextLine());
+        System.out.println("Nhập id nhân viên");
+        String id = scanner.nextLine();
+        System.out.println("Nhập tên nhân viên");
+        String ten = scanner.nextLine();
         System.out.println("Nhập ngày sinh");
-        employee.setNgaySinh(scanner.nextLine());
+        String ngaySinh = scanner.nextLine();
         System.out.println("Nhập giới tính");
-        employee.setGioiTinh(scanner.nextLine());
-        System.out.println("Nhập chứng minh nhân dân ");
-        employee.setSoCMND(Integer.parseInt(scanner.nextLine()));
-        System.out.println("Nhập số điện thoại ");
-        employee.setSoDienThoai(Integer.parseInt(scanner.nextLine()));
+        String gioiTinh = scanner.nextLine();
+        System.out.println("Nhập số CMND");
+        int cmnd = Integer.parseInt(scanner.nextLine());
+        System.out.println("Nhập số điện thoại");
+        int sdt = Integer.parseInt(scanner.nextLine());
         System.out.println("Nhập email");
-        employee.setEmail(scanner.nextLine());
+        String mail = scanner.nextLine();
+        System.out.println("Nhập trình độ học vấn");
+        String trinhDo = scanner.nextLine();
+        System.out.println("Nhập vị trí");
+        String viTri = scanner.nextLine();
         System.out.println("Nhập lương");
-        employee.setLuong(Double.parseDouble(scanner.nextLine()));
-        employee.setTrinhDo(setTrinhDo());
-        employee.setViTri(setVitri());
+        double luong = scanner.nextDouble();
+        Employee employee = new Employee(id, ten, ngaySinh, gioiTinh, cmnd, sdt, mail, trinhDo, viTri, luong);
         employees.add(employee);
-        disPlay();
     }
 
     @Override
     public void edit(String hoTen) {
-        Scanner scanner = new Scanner(System.in);
-        for (int j = 0; j < employees.size(); j++) {
-            if (employees.get(j).getHoVaTen().equals(hoTen)) {
-                System.out.println("Nhập mã ID");
-                employees.get(j).setMaID(scanner.nextLine());
-                System.out.println("Nhập họ tên ");
-                employees.get(j).setHoVaTen(scanner.nextLine());
-                System.out.println("Nhập ngày sinh ");
-                employees.get(j).setNgaySinh(scanner.nextLine());
-                System.out.println("Nhập giới tính ");
-                employees.get(j).setGioiTinh(scanner.nextLine());
-                System.out.println("Nhập số CMND ");
-                employees.get(j).setSoCMND(Integer.parseInt(scanner.nextLine()));
-                System.out.println("Nhập số CMND ");
-                employees.get(j).setSoCMND(Integer.parseInt(scanner.nextLine()));
-                System.out.println("Nhập email ");
-                employees.get(j).setEmail(scanner.nextLine());
+        for (int i = 0; i < employees.size(); i++) {
+            if (hoTen.equals(employees.get(i).getHoVaTen())) {
+                System.out.println("Nhập tên nhân viên");
+                employees.get(i).setHoVaTen(scanner.nextLine());
+                System.out.println("Nhập id");
+                employees.get(i).setMaID(scanner.nextLine());
+                System.out.println("Nhập ngày sinh");
+                employees.get(i).setNgaySinh(scanner.nextLine());
+                System.out.println("Nhập giới tính");
+                employees.get(i).setGioiTinh(scanner.nextLine());
+                System.out.println("Nhập CMND");
+                employees.get(i).setSoCMND(Integer.parseInt(scanner.nextLine()));
+                System.out.println("Nhập số điện thoại");
+                employees.get(i).setSoDienThoai(Integer.parseInt(scanner.nextLine()));
+                System.out.println("Nhập email");
+                employees.get(i).setEmail(scanner.nextLine());
+                System.out.println("Nhập trình độ học vấn");
+                employees.get(i).setTrinhDo(scanner.nextLine());
+                System.out.println("Nhập vị trí");
+                employees.get(i).setViTri(scanner.nextLine());
                 System.out.println("Nhập lương");
-                employees.get(j).setLuong(Double.parseDouble(scanner.nextLine()));
-                employees.get(j).setTrinhDo(setTrinhDo());
-                employees.get(j).setViTri(setVitri());
+                employees.get(i).setLuong(Double.parseDouble(scanner.nextLine()));
+                break;
             }
         }
+        disPlay();
     }
-    Scanner scanner =  new Scanner(System.in);
-    public String setVitri(){
-
-        String result = "";
-        System.out.println("Mời chọn Vị trí");
-        System.out.println("1.Lễ tân, 2.phục vụ, 3.chuyên viên, 4.giám sát, 5.quản lý, 6.giám đốc");
-        int choice1 = scanner.nextInt();
-
-        switch (choice1) {
-            case 1:
-                result = "Lễ tân";
-                break;
-            case 2:
-                result = "phục vụ";
-                break;
-            case 3:
-                result = "chuyên viên";
-                break;
-            case 4:
-                result = "giám sát";
-                break;
-            case 5:
-                result = "quản lý";
-                break;
-            case 6:
-                result = "giám đốc";
-                break;
-        }
-        return result;
-    }
-    public String setTrinhDo(){
-        String reSultTrinhDo = "";
-        System.out.println("Mời chọn trình độ");
-        System.out.println("1.Trung cấp - 2.Cao đẳng - 3.Đại học - 4.sau đại học");
-        int choice = scanner.nextInt();
-        switch (choice) {
-            case 1:
-                reSultTrinhDo = "Trung cấp";
-                break;
-            case 2:
-                reSultTrinhDo = "Cao đẳng";
-                break;
-            case 3:
-                reSultTrinhDo = "Đại học";
-                break;
-            case 4:
-                reSultTrinhDo = "sau đại học";
-                break;
-
-        }
-        return reSultTrinhDo;
-    }
-
-
 }

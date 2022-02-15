@@ -6,16 +6,15 @@ public class Booking {
     private String ngayKetThuc;
     private String maKhachHang;
     private String tenDichVu;
-    private String loaiDichVu;
+
 
     public Booking(String maBooking, String ngayBatDau, String ngayKetThuc,
-                   String maKhachHang, String tenDichVu, String loaiDichVu) {
+                   String maKhachHang, String tenDichVu) {
         this.maBooking = maBooking;
         this.ngayBatDau = ngayBatDau;
         this.ngayKetThuc = ngayKetThuc;
         this.maKhachHang = maKhachHang;
         this.tenDichVu = tenDichVu;
-        this.loaiDichVu = loaiDichVu;
 
     }
 
@@ -60,14 +59,6 @@ public class Booking {
 
     public void setTenDichVu(String tenDichVu) {
         this.tenDichVu = tenDichVu;
-    }
-
-    public String getLoaiDichVu() {
-        return loaiDichVu;
-    }
-
-    public void setLoaiDichVu(String loaiDichVu) {
-        this.loaiDichVu = loaiDichVu;
     }
 
     @Override

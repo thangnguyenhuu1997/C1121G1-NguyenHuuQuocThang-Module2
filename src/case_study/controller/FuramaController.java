@@ -11,6 +11,7 @@ public class FuramaController {
     public static void main(String[] args) {
         displayMainMenu();
     }
+
     public static void displayMainMenu() {
         int choose = 0;
         boolean check = true;
@@ -22,7 +23,11 @@ public class FuramaController {
             System.out.println("5.\tPromotion Management");
             System.out.println("6.\tExit");
             Scanner scanner = new Scanner(System.in);
-            choose = Integer.parseInt(scanner.nextLine());
+            try {
+                choose = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Bạn đã nhập sai định dang, vui lòng nhập lại");
+            }
 
             switch (choose) {
                 case 1:
@@ -32,13 +37,13 @@ public class FuramaController {
                     displayCustomer();
                     break;
                 case 3:
-                    displayFacility();
+                    facilityDisplay();
                     break;
                 case 4:
-                    displayBooking();
+                    displayBookingMenu();
                     break;
                 case 5:
-                    displayListCustomer();
+
                     break;
                 case 6:
                     check = false;
@@ -53,23 +58,27 @@ public class FuramaController {
         int choose = 0;
         boolean check = true;
         while (check) {
-            System.out.println("1\tDisplay list employees");
-            System.out.println("2\tAdd new employee");
+            System.out.println("1\tAdd new employee");
+            System.out.println("2\tDisplay list employees");
             System.out.println("3\tEdit employee");
             System.out.println("4\tReturn main menu");
             Scanner scanner = new Scanner(System.in);
             choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
                 case 1:
-                    employeeService.disPlay();
-                    break;
-                case 2:
                     employeeService.add();
                     break;
+                case 2:
+                    employeeService.disPlay();
+                    break;
                 case 3:
+                    Scanner sc = new Scanner(System.in);
+                    System.out.println("Nhập tên nhân viên cần sửa");
+                    String hoTen = sc.nextLine();
+                    employeeService.edit(hoTen);
                     break;
                 case 4:
-                    check =false;
+                    check = false;
                     break;
             }
         }
@@ -80,8 +89,8 @@ public class FuramaController {
         int choose = 0;
         boolean check = true;
         while (check) {
-            System.out.println("1.\tDisplay list customers");
-            System.out.println("2\tAdd new customers");
+            System.out.println("1.\tAdd new customers");
+            System.out.println("2\tDisplay list customers ");
             System.out.println("3\tEdit customers");
             System.out.println("4\tReturn main menu");
             Scanner scanner = new Scanner(System.in);
@@ -90,11 +99,24 @@ public class FuramaController {
         }
         switch (choose) {
             case 1:
+                customerService.add();
+                break;
+            case 2:
+                customerService.disPlay();
+                break;
+            case 3:
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Nhập tên khách hàng");
+                String hoTen = sc.nextLine();
+                customerService.edit(hoTen);
+                break;
+            case 4:
+                check = false;
                 break;
         }
     }
 
-    public static void displayFacility() {
+    public static void facilityDisplay() {
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
         int choose = 0;
         boolean check = true;
@@ -106,60 +128,71 @@ public class FuramaController {
             Scanner scanner = new Scanner(System.in);
             choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
-            case 1:
-                break;
-        }
+                case 1:
+                    facilityService.disPlay();
+                    break;
+                case 2:
+                    facilityMenu();
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    check = false;
+                    break;
+            }
         }
     }
-    public static void addNewFacilityMenu() {
+
+    public static void facilityMenu() {
         FacilityServiceImpl facilityService = new FacilityServiceImpl();
         int choose = 0;
         boolean check = true;
         while (check) {
-            System.out.println("1.\tAdd new Villa");
+            System.out.println("1.\tAdd New Villa");
             System.out.println("2\tAdd new House");
             System.out.println("3\tAdd new Room");
-            System.out.println("3\tReturn main menu");
+            System.out.println("4\tReturn main menu");
             Scanner scanner = new Scanner(System.in);
             choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
                 case 1:
+                    facilityService.addVilla();
+                    facilityDisplay();
+                    break;
+                case 2:
+                    facilityService.addHouse();
+                    facilityDisplay();
+                    break;
+                case 3:
+                    facilityService.addRoom();
+                    facilityDisplay();
+                    break;
+                case 4:
+                    check = false;
                     break;
             }
         }
     }
-    public static void displayBooking() {
+
+    private static void displayBookingMenu() {
+        System.out.println("1.\tAdd new Booking");
+        System.out.println("2\tDisplay list Booking");
+        System.out.println("3\tCreate new Contract");
+        System.out.println("4\tDisplay list contract");
+        System.out.println("5\tEdit contract");
+        System.out.println("6\tReturn main menu");
         BookingServiceImpl bookingService = new BookingServiceImpl();
-        int choose = 0;
-        boolean check = true;
+        Boolean check = true;
         while (check) {
-            System.out.println("1.\tAdd new booking");
-            System.out.println("2.\tDisplay list booking");
-            System.out.println("3.\tCreate new constracts");
-            System.out.println("4.\tDisplay list contracts");
-            System.out.println("5.\tEdit contracts");
-            System.out.println("6.\tReturn main menu");
             Scanner scanner = new Scanner(System.in);
-            choose = Integer.parseInt(scanner.nextLine());
-
-            switch (choose) {
+            switch (scanner.nextInt()){
                 case 1:
+                    bookingService.addBooking();
+                    displayBookingMenu();
                     break;
-            }
-        }
-    }
-    public static void displayListCustomer() {
-        int choose = 0;
-        boolean check = true;
-        while (check) {
-            System.out.println("1.\tDisplay list customers use service");
-            System.out.println("2.\tDisplay list customers get voucher");
-            System.out.println("3.\tReturn main menu");
-            Scanner scanner = new Scanner(System.in);
-            choose = Integer.parseInt(scanner.nextLine());
-
-            switch (choose) {
-                case 1:
+                case 2:
+                    bookingService.displayListBooking();
+                    displayBookingMenu();
                     break;
             }
         }
