@@ -3,6 +3,7 @@ package case_study.services.impl;
 import case_study.models.Employee;
 import case_study.services.EmployeeService;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -73,5 +74,45 @@ public class EmployeeServiceImpl extends Employee implements EmployeeService {
             }
         }
         disPlay();
+    }
+
+    @Override
+    public void writeFile() {
+        try {
+            FileWriter fileWriter = new FileWriter("E:\\Download\\Module2\\src\\case_study\\data\\employee.csv",false);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (Employee employee : employees) {
+                bufferedWriter.write(employee.toString());
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void readFile() {
+        List<Employee> list2 = new ArrayList<>();
+        FileReader fileReader = null;
+        try {
+            fileReader = new FileReader("E:\\Download\\Module2\\src\\case_study\\data\\employee.csv");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] array = line.split(",");
+                Employee employee = new Employee(array[0], array[1], array[2], array[3], Integer.parseInt(array[4]), Integer.parseInt(array[5]),
+                        array[6], array[7], array[8], Double.parseDouble(array[9]));
+                list2.add(employee);
+            }
+            bufferedReader.close();
+            for (Employee employee : list2) {
+                System.out.println(employee);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

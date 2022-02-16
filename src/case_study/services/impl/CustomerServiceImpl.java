@@ -1,8 +1,11 @@
 package case_study.services.impl;
 
 import case_study.models.Customer;
+import case_study.models.Employee;
 import case_study.services.CustomerService;
 
+import java.io.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -68,5 +71,44 @@ public class CustomerServiceImpl extends Customer implements CustomerService {
             }
         }
         disPlay();
+    }
+
+    @Override
+    public void writeFile() {
+        try {
+            FileWriter fileWriter = new FileWriter("E:\\Download\\Module2\\src\\case_study\\data\\customers.csv",false);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (Customer customer : customers) {
+                bufferedWriter.write(customer.toString());
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void readFile() {
+        List<Customer> list2 = new ArrayList<>();
+        FileReader fileReader = null;
+        try {
+            fileReader = new FileReader("E:\\Download\\Module2\\src\\case_study\\data\\customers.csv");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] array = line.split(",");
+                Customer customer = new Customer(array[0],array[1],array[2],array[3],Integer.parseInt(array[4]),Integer.parseInt(array[5]),array[6],array[7],array[8]);
+                list2.add(customer);
+            }
+            bufferedReader.close();
+            for (Customer customer : list2) {
+                System.out.println(customer);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

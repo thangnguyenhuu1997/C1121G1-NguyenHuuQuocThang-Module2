@@ -67,9 +67,11 @@ public class FuramaController {
             switch (choose) {
                 case 1:
                     employeeService.add();
+                    employeeService.writeFile();
                     break;
                 case 2:
                     employeeService.disPlay();
+                    employeeService.readFile();
                     break;
                 case 3:
                     Scanner sc = new Scanner(System.in);
@@ -95,24 +97,25 @@ public class FuramaController {
             System.out.println("4\tReturn main menu");
             Scanner scanner = new Scanner(System.in);
             choose = Integer.parseInt(scanner.nextLine());
-
-        }
-        switch (choose) {
-            case 1:
-                customerService.add();
-                break;
-            case 2:
-                customerService.disPlay();
-                break;
-            case 3:
-                Scanner sc = new Scanner(System.in);
-                System.out.println("Nhập tên khách hàng");
-                String hoTen = sc.nextLine();
-                customerService.edit(hoTen);
-                break;
-            case 4:
-                check = false;
-                break;
+            switch (choose) {
+                case 1:
+                    customerService.add();
+                    customerService.writeFile();
+                    break;
+                case 2:
+                    customerService.disPlay();
+                    customerService.readFile();
+                    break;
+                case 3:
+                    Scanner sc = new Scanner(System.in);
+                    System.out.println("Nhập tên khách hàng");
+                    String hoTen = sc.nextLine();
+                    customerService.edit(hoTen);
+                    break;
+                case 4:
+                    check = false;
+                    break;
+            }
         }
     }
 
